@@ -1,0 +1,132 @@
+什么 是 AJAX  ？？
+
+说了 很多遍了
+
+AJAX 就是 前端 与 后端 的 一个通信 工具吧。
+
+就是实现 前后端 数据 交互
+并且实现 不刷新 跟新局部页面 ( 通过 js 更新操作 后台传递的数据 ) ！！！！！！！！！！！！！！！！！！！！！！
+
+------------------------------------------
+！！！
+
+值得注意的是  前端(JS) 与 后端(PHP) 的  数据是 不能 直接 使用的
+因为是 两种 不同的 语言，如  如 JS/php/java/C/C++ 等等。
+怎么 才能 实现 不同 语言的  数据 交换  ？？
+
+Json 格式 的 字符串（约定 是键值对的格式） 。 
+字符串  所有语言 都能 接收 和处理。
+只要 吧字符串 传递 了， php 等 就能  把他 转成 能执行的数据
+
+如  php  的  json_decode（转成json字符串）/  Json_decode （转回来）
+
+-------------------------------------------------
+
+Laravel 项目 一般流程
+
+一丶 laravel 的建立 与 配置
+
+1.生成 laravel 项目
+
+laravel  new  ajax
+
+2.配置laravel
+
+database.php
+{
+    ...
+
+    'mysql' => [
+           
+            'prefix' => 'AJ_',
+            'engine' => 'innodb',
+        ],
+
+    ...
+}
+.env
+{
+    ...
+
+DB_DATABASE=laravel-ajax
+DB_USERNAME=root
+DB_PASSWORD=
+    
+    ...
+}
+
+
+3.建库 
+
+库名 laravel-ajax
+字符集 utf8mb4
+排序规则 utf8mb4_unicode_ci
+
+
+二丶 功能模块的添加 (登陆 /注册 等等)
+【以下是 每添加 一个 功能 模块 可能 经常 用到的 步骤】
+
+
+测试 AJAX 的功能  
+
+后端:
+
+1.那就一个建 TestController 控制器
+php artisan make:controller TestController
+
+2.建一个 Test 模型 + 迁移文件
+php artisan make:model Models/Test -m
+
+3.建 表单(数据)验证 , 对数据的约束
+php artisan make:request TestRequest
+
+4.添加路由
+
+Route::get('test/hello','TestController@hello')->name('hello'); // 也叫接口
+
+5.创建视图
+
+
+
+
+
+例子1.
+
+Ajax 简单 数据交互
+TestController hello 方法
+ajax.blade.php
+Route('hello');
+
+
+例子2.
+
+简单 实例  <<远程的灯泡>> 的开关 
+(该例子 需要建库 并执行迁移指令 添加灯泡数据)
+
+
+
+
+
+
+
+php artisan serve 开启web服务
+
+php artisan migrate   执行迁移
+
+本 laravel  AJAX  教程 共用 
+
+
+测试文档
+
+'/public/js/jquery-3.2.1.min.js' 
+database.php 一些配置
+.env 一些配置
+web.php 路由
+TestController.php 控制器
+Test.php 模型
+TestRequest.php 没卵用
+ajax.blade.php  Ajax 数据交互
+light.blade.php 灯泡示例
+2018_05_25_154432_create_tests_table.php 数据库迁移文件
+
+
