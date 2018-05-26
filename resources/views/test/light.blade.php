@@ -41,8 +41,6 @@ $.ajax({
         //  以下代码  就是 无刷新 通过 JS  更新页面 , 如果 没有 这段代码  就需要 刷新重新显示
             $('#light'+data.errno).toggleClass('on');
 
-
-
             return;
             if(data.ermsg==1){
                 $('#light'+data.errno).addClass('on');
